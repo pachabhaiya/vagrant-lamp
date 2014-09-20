@@ -1,0 +1,5 @@
+# Ignore vagrant specific files.
+.vagrant
+
+# Ignore operating system generated files.
+.DS_Store
