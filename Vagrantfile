@@ -52,18 +52,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
-  # config.vm.provider "virtualbox" do |vb|
-  #   # Don't boot with headless mode
-  #   vb.gui = true
-  #
-  #   # Use VBoxManage to customize the VM. For example to change memory:
-  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
-  # end
-  #
-  # View the documentation for the provider you're using for more
-  # information on available options.
+  config.vm.provider "virtualbox" do |vb|
+    # Don't boot with headless mode
+    vb.gui = false
+
+    # Virtual machine name
+    vb.name = config_vm['hostname'] + "-vm"
+
+    # Memory settings
+    vb.memory = 1024
+
+    # CPU settings
+    vb.cpus = 2
+
+    # The VM is modified to have a host CPU execution cap of 50%,
+    # meaning that no matter how much CPU is used in the VM, no more than 50%
+    # would be used on your own host machine.
+    vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+  end
 
   # Enable provisioning with Ansible.
   config.vm.provision "ansible" do |ansible|
