@@ -1,13 +1,16 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Vagrant version requirements.
-# Load the Vagrantfile only if the version loading it is Vagrant 1.6.3 or greater.
-Vagrant.require_version ">= 1.6.3"
+# Current vagrant directory.
+vagrant_dir = File.dirname(File.expand_path(__FILE__))
 
 # Include config from centos/settings.yml.
 require 'yaml'
-config_vm = YAML::load_file("./centos/settings.yml")
+config_vm = YAML::load_file("#{vagrant_dir}/centos/settings.yml")
+
+# Vagrant version requirements.
+# Load the Vagrantfile only if the version loading it is Vagrant 1.6.3 or greater.
+Vagrant.require_version ">= 1.6.3"
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
@@ -48,7 +51,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder config_vm['synced_folder'], "/var/www/html", type: "nfs"
+  config.vm.synced_folder "#{vagrant_dir}/#{config_vm['synced_folder']}", "/var/www/html", type: "nfs"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -73,7 +76,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Enable provisioning with Ansible.
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "./centos/playbooks/site.yml"
+    ansible.playbook = "#{vagrant_dir}/centos/playbooks/site.yml"
   end
 
   # Enable provisioning with CFEngine. CFEngine Community packages are
