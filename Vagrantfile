@@ -1,6 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Vagrant version requirements.
+# Load the Vagrantfile only if the version loading it is Vagrant 1.6.3 or greater.
+Vagrant.require_version ">= 1.6.3"
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
