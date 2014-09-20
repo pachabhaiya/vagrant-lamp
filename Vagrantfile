@@ -5,6 +5,10 @@
 # Load the Vagrantfile only if the version loading it is Vagrant 1.6.3 or greater.
 Vagrant.require_version ">= 1.6.3"
 
+# Include config from centos/settings.yml.
+require 'yaml'
+config_vm = YAML::load_file("./centos/settings.yml")
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
