@@ -1,6 +1,16 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Check if the 'vagrant-trigger' plugin is installed or not.
+# If 'vagrant-trigger' plugin is not installed then exit.
+if !Vagrant.has_plugin?('vagrant-triggers')
+  puts "'vagrant-triggers' plugin not installed."
+  puts "..."
+  puts "Visit this link for more details:"
+  puts "https://github.com/emyl/vagrant-triggers"
+  exit
+end
+
 # Current vagrant directory.
 vagrant_dir = File.dirname(File.expand_path(__FILE__))
 
