@@ -90,6 +90,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
+  # Run an Ansible playbook 'vagrant-halt_destroy.yml' on 'vagrant halt/destroy' command.
+  if File.exist?("#{inventory_file}")
+    config.trigger.before [:halt, :destroy], :stdout => true, :force => true do
+      info "Executing 'halt/destroy' trigger"
+      run "ansible-playbook -i #{inventory_file} #{vagrant_dir}/centos/playbooks/vagrant-halt_destroy.yml"
+    end
+  end
+
   # Enable provisioning with CFEngine. CFEngine Community packages are
   # automatically installed. For example, configure the host as a
   # policy server and optionally a policy file to run:

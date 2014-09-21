@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: no
+  vars_files:
+    - ../settings.yml
+
+  tasks:
+    - name: Delete ansible inventory file.
+      file: path=./hosts state=absent
+      delegate_to: 127.0.0.1
