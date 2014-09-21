@@ -1,5 +1,7 @@
-# Ignore vagrant specific files.
+# Ignore vagrant/ansible specific files.
 .vagrant
+/centos/ansible.log
+/centos/playbooks/hosts
 
 # Ignore operating system generated files.
 .DS_Store
