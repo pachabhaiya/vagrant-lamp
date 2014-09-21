@@ -5,3 +5,10 @@ box: 'chef/centos-6.5'
 hostname: 'centos-drupal'
 ip: '192.168.10.10'
 synced_folder: './www'
+
+# Webserver configuration.
+webserver_servername: 'drupal7.dev'
+webserver_serveralias: 'www.drupal7.dev'
+
+# Local hosts file location.
+hosts_file: '/etc/hosts'
