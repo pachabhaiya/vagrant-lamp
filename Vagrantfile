@@ -4,6 +4,9 @@
 # Current vagrant directory.
 vagrant_dir = File.dirname(File.expand_path(__FILE__))
 
+# Ansible inventory file.
+inventory_file = "#{vagrant_dir}/centos/playbooks/hosts"
+
 # Include config from centos/settings.yml.
 require 'yaml'
 config_vm = YAML::load_file("#{vagrant_dir}/centos/settings.yml")
@@ -77,6 +80,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Enable provisioning with Ansible.
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "#{vagrant_dir}/centos/playbooks/site.yml"
+  end
+
+  # Run an Ansible playbook 'vagrant-up.yml' on 'vagrant up' command.
+  if !File.exist?("#{inventory_file}")
+    config.trigger.before :up, :stdout => true, :force => true do
+      info "Executing 'up' trigger"
+      run "ansible-playbook -i #{config_vm['ip']}, #{vagrant_dir}/centos/playbooks/vagrant-up.yml"
+    end
   end
 
   # Enable provisioning with CFEngine. CFEngine Community packages are

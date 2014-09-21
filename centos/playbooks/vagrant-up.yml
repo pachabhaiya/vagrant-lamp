@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: no
+  vars_files:
+    - ../settings.yml
+
+  tasks:
+    - name: Create ansible inventory file.
+      template: src=templates/hosts.j2 dest=./hosts
+      delegate_to: 127.0.0.1
