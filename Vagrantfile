@@ -96,7 +96,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   if !File.exist?("#{inventory_file}")
     config.trigger.before :up, :stdout => true, :force => true do
       info "Executing 'up' trigger"
-      run "ansible-playbook -i #{config_vm['ip']}, #{vagrant_dir}/centos/playbooks/vagrant-up.yml"
+      run "ansible-playbook -i #{config_vm['ip']}, --ask-sudo-pass #{vagrant_dir}/centos/playbooks/vagrant-up.yml --extra-vars \"inventory_file=#{inventory_file}\""
     end
   end
 
@@ -104,7 +104,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   if File.exist?("#{inventory_file}")
     config.trigger.before [:halt, :destroy], :stdout => true, :force => true do
       info "Executing 'halt/destroy' trigger"
-      run "ansible-playbook -i #{inventory_file} #{vagrant_dir}/centos/playbooks/vagrant-halt_destroy.yml"
+      run "ansible-playbook -i #{inventory_file} --ask-sudo-pass #{vagrant_dir}/centos/playbooks/vagrant-halt_destroy.yml --extra-vars \"inventory_file=#{inventory_file}\""
     end
   end
 
