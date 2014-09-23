@@ -12,3 +12,7 @@ webserver_serveralias: 'www.drupal7.dev'
 
 # Local hosts file location.
 hosts_file: '/etc/hosts'
+
+# Git configuration.
+git_user_name: "YOUR_FULLNAME_HERE"
+git_user_email: "YOUR_EMAIL_HERE"
