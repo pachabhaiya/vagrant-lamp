@@ -1,1 +1,6 @@
 ---
+
+# Install Git.
+- name: Install Git
+  yum: name=git state=present
+  sudo: true
