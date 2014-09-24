@@ -1,0 +1,11 @@
+---
+
+# Install MySQL.
+- name: Install MySQL
+  yum: pkg={{ item }} state=present
+  with_items:
+    - mysql-libs
+    - mysql
+    - mysql-server
+  sudo: true
+  notify: start mysql
