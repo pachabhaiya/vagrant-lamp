@@ -16,3 +16,6 @@ hosts_file: '/etc/hosts'
 # Git configuration.
 git_user_name: "YOUR_FULLNAME_HERE"
 git_user_email: "YOUR_EMAIL_HERE"
+
+# Ansible verbose mode.
+ansible_verbose: ''

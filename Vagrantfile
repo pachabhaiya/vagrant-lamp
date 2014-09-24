@@ -90,6 +90,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Enable provisioning with Ansible.
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "#{vagrant_dir}/centos/playbooks/site.yml"
+    if config_vm['ansible_verbose'] != ''
+      ansible.verbose = config_vm['ansible_verbose']
+    end
   end
 
   # Run an Ansible playbook 'vagrant-up.yml' on 'vagrant up' command.
