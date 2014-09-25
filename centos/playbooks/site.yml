@@ -8,3 +8,5 @@
     - role: common
 
     - role: mysql
+
+    - role: apache

@@ -1,0 +1,5 @@
+---
+
+- name: start apache
+  service: name=httpd state=started
+  sudo: true
