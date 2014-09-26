@@ -1,1 +1,1 @@
-# Vagrant - CentOS VM for Drupal development
+# Vagrant LAMP
