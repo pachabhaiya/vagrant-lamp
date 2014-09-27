@@ -2,7 +2,7 @@
 
 # Vagrantfile configuration.
 box: 'chef/centos-6.5'
-hostname: 'centos-drupal'
+hostname: 'vagrant-lamp'
 ip: '192.168.10.10'
 synced_folder: './www'
 
