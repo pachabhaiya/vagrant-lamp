@@ -3,8 +3,9 @@
 - name: Install Apache HTTP Server
   yum: name=httpd state=present
   sudo: true
-  notify: start apache
 
-- name: Enable "httpd" service permanently
-  command: chkconfig httpd on
+# sudo service httpd start
+# sudo chkconfig httpd on
+- name: Start Apache HTTP Server and enable 'httpd' service permanently
+  service: name=httpd state=started enabled=yes
   sudo: true
