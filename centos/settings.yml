@@ -19,3 +19,7 @@ git_user_email: "YOUR_EMAIL_HERE"
 
 # Ansible verbose mode.
 ansible_verbose: ''
+
+# MySQL configurations.
+mysql_root_password: 'root'
+mysql_port: 3306
