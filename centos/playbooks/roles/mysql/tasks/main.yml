@@ -3,12 +3,19 @@
 - name: Install MySQL
   yum: pkg={{ item }} state=present
   with_items:
-    - mysql-libs
     - mysql
     - mysql-server
+    - MySQL-python
   sudo: true
-  notify: start mysql
 
-- name: Enable "mysqld" service permanently
-  command: chkconfig mysqld on
+# sudo service mysqld start
+# sudo chkconfig mysqld on
+- name: Ensure MySQL service is started and enabled at boot
+  service: name=mysqld state=started enabled=yes
   sudo: true
+
+- name: Change MySQL root user's password
+  mysql_user: name=root password=root host=localhost
+
+- name: Configure MySQL database
+  template: src=mysql_user.my.cnf.j2 dest=/home/{{ user }}/.my.cnf
