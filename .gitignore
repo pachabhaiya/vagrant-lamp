@@ -5,3 +5,6 @@
 
 # Ignore operating system generated files.
 .DS_Store
+
+# Ignore document root directory.
+/www
