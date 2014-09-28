@@ -1,5 +1,11 @@
 ---
 
+# If you have SELinux enabled on remote nodes, you will also want to install
+# libselinux-python on them before using any copy/file/template related functions in Ansible.
+- name: Install libselinux-python package
+  yum: name=libselinux-python state=present
+  sudo: true
+
 # Install Git.
 - name: Install Git
   yum: name=git state=present
