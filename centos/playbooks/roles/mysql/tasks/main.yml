@@ -1,6 +1,5 @@
 ---
 
-# Install MySQL.
 - name: Install MySQL
   yum: pkg={{ item }} state=present
   with_items:
@@ -9,3 +8,7 @@
     - mysql-server
   sudo: true
   notify: start mysql
+
+- name: Enable "mysqld" service permanently
+  command: chkconfig mysqld on
+  sudo: true
