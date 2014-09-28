@@ -1,0 +1,9 @@
+---
+
+- name: Install PHP 5.4
+  yum: name=php54 state=present
+  sudo: true
+
+- name: Enable PHP 5.4
+  shell: source /opt/rh/php54/enable
+  sudo: true

@@ -5,8 +5,12 @@
     - ../settings.yml
 
   roles:
+    - role: yum
+
     - role: common
 
     - role: mysql
 
     - role: apache
+
+    - role: php

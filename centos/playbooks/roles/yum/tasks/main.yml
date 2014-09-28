@@ -1,0 +1,5 @@
+---
+
+- name: Install Software Collections (SCL)
+  yum: name=centos-release-SCL state=present
+  sudo: true
