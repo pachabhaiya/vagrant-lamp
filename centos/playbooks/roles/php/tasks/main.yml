@@ -1,9 +1,6 @@
 ---
 
-- name: Install PHP 5.4
-  yum: name=php54 state=present
+- name: Install PHP 5.4.33 using remi repo
+  yum: name=php enablerepo=remi state=present
   sudo: true
-
-- name: Enable PHP 5.4
-  shell: source /opt/rh/php54/enable
-  sudo: true
+  notify: restart apache
