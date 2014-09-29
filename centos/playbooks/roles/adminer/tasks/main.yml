@@ -1,0 +1,13 @@
+---
+
+- name: Create 'adminer' directory
+  file: path=/var/www/html/adminer state=directory
+  sudo: true
+
+- name: Copy adminer
+  copy: src=adminer-4.1.0.php dest=/var/www/html/adminer/adminer-4.1.0.php
+  sudo: true
+
+- name: Copy adminer css
+  copy: src=adminer.css dest=/var/www/html/adminer/adminer.css
+  sudo: true
