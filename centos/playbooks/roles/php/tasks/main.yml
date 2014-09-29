@@ -1,6 +1,9 @@
 ---
 
 - name: Install PHP 5.4.33 using remi repo
-  yum: name=php enablerepo=remi state=present
+  yum: pkg={{ item }} enablerepo=remi state=present
+  with_items:
+    - php
+    - php-mysql
   sudo: true
   notify: restart apache
