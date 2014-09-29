@@ -3,3 +3,11 @@
 - name: Install Software Collections (SCL)
   yum: name=centos-release-SCL state=present
   sudo: true
+
+- name: Install epel repo
+  yum: name=http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm state=present
+  sudo: true
+
+- name: Install remi repo
+  yum: name=http://rpms.famillecollet.com/enterprise/remi-release-6.rpm state=present
+  sudo: true
