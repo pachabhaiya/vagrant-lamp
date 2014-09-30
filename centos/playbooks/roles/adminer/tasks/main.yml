@@ -11,3 +11,7 @@
 - name: Copy adminer css
   copy: src=adminer.css dest=/var/www/html/adminer/adminer.css
   sudo: true
+
+- name: Copy adminer index.php
+  template: src=index.php.j2 dest=/var/www/html/adminer/index.php
+  sudo: true
